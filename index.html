@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Find Your Phone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h3 class="text-center mb-2 mt-1">Lets Find Your Phone</h3>
+    <div class="container py-3">
+        <div class="input-group mb-3 w-75 mx-auto">
+            <input type="text" class="form-control" placeholder="Search Your Phone" id="phone-input">
+            <button class="btn btn-info" type="button" onclick="searchPhone()">Search</button>
+        </div>
+    </div>
+
+
+    <!-- loader -->
+    <div class="d-flex justify-content-center" id="loader">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- error display -->
+    <div id="error-display"></div>
+
+    <!-- phone details -->
+    <div id="phone-detail"></div>
+
+    <!-- main-wrapper -->
+    <div id="phone-wrapper"></div>
+
+    <!-- js link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
