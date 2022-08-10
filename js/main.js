@@ -32,7 +32,18 @@ const displayPhoneResult = (phone) => {
   const phoneWrapper = document.getElementById("phone-wrapper");
   phone.map((phoneInfo) => {
     console.log("all search phone", phoneInfo);
+    const singlePhoneDiv = document.createElement("div");
+    singlePhoneDiv.classList.add("col-md-4", "mb-5");
+    singlePhoneDiv.innerHTML = `
+      <div class="card">
+          <img src="${phoneInfo.image}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${phoneInfo.phone_name}</h5>
+            <p class="card-text">Brand : ${phoneInfo.brand}</p>
+            <a href="#" class="btn btn-primary">Get Details</a>
+          </div>
+      </div>
+    `;
+    phoneWrapper.appendChild(singlePhoneDiv);
   });
 };
-
-
