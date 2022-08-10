@@ -40,7 +40,7 @@ const displayPhoneResult = (phone) => {
           <div class="card-body">
             <h5 class="card-title">${phoneInfo.phone_name}</h5>
             <p class="card-text">Brand : ${phoneInfo.brand}</p>
-            <a href="#" class="btn btn-primary" onclick=phoneDetail('${phoneInfo.slug}')>Get Details</a>
+            <a href="#" class="btn btn-primary" onclick=loadPhoneDetail('${phoneInfo.slug}')>Get Details</a>
           </div>
       </div>
     `;
@@ -49,12 +49,47 @@ const displayPhoneResult = (phone) => {
 };
 
 // phone details data load
-const phoneDetail = async (phoneSlug) => {
+const loadPhoneDetail = async (phoneSlug) => {
   console.log(phoneSlug);
   const url = `https://openapi.programming-hero.com/api/phone/${phoneSlug}`;
   const res = await fetch(url);
   const phoneResult = await res.json();
-  displayPhoneDetails(phoneResult.data)
+  displayPhoneDetails(phoneResult.data);
   console.log(phoneResult.data);
 };
 
+// display phone details result
+const displayPhoneDetails = (phoneDetail) => {
+  console.log("phone details", phoneDetail);
+  const phoneDetailDiv = document.getElementById("phone-detail");
+  const singleDetailDiv = document.createElement("div");
+  singleDetailDiv.classList.add("col-md-6", "mb-5", "mx-auto", "d-block");
+  singleDetailDiv.innerHTML = `
+  
+       <div class="card">
+          <img src="${phoneDetail.image}" class="card-img-top img-fluid img-thumbnail" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${phoneDetail.name}</h5>
+            <p class="card-text">Brand : ${phoneDetail.brand}</p>
+            <p class="card-text">Main Features :</p>
+            <ul>
+              <li>Chip Set: ${phoneDetail.mainFeatures.chipSet}</li>
+              <li>Display Size: ${phoneDetail.mainFeatures.displaySize}</li>
+              <li>Memory: ${phoneDetail.mainFeatures.memory}</li>
+            </ul>
+            <p class="card-text">Others Features : </p>
+            <ul>
+              <li>Bluetooth: ${phoneDetail.others.Bluetooth}</li>
+              <li>GPS: ${phoneDetail.others.GPS}</li>
+              <li>NFC: ${phoneDetail.others.NFC}</li>
+              <li>Radio: ${phoneDetail.others.Radio}</li>
+              <li>USB: ${phoneDetail.others.USB}</li>
+              <li>WLAN: ${phoneDetail.others.USB}</li>
+              <li>${phoneDetail.others.WLAN}</li>
+            </ul>  
+            <p class="card-text">Release Date : ${phoneDetail.releaseDate}</p>
+           </div>
+      </div>
+  `;
+  phoneDetailDiv.appendChild(singleDetailDiv);
+};
