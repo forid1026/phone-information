@@ -36,14 +36,25 @@ const displayPhoneResult = (phone) => {
     singlePhoneDiv.classList.add("col-md-4", "mb-5");
     singlePhoneDiv.innerHTML = `
       <div class="card">
-          <img src="${phoneInfo.image}" class="card-img-top" alt="...">
+          <img src="${phoneInfo.image}" class="card-img-top img-fluid img-thumbnail" alt="...">
           <div class="card-body">
             <h5 class="card-title">${phoneInfo.phone_name}</h5>
             <p class="card-text">Brand : ${phoneInfo.brand}</p>
-            <a href="#" class="btn btn-primary">Get Details</a>
+            <a href="#" class="btn btn-primary" onclick=phoneDetail('${phoneInfo.slug}')>Get Details</a>
           </div>
       </div>
     `;
     phoneWrapper.appendChild(singlePhoneDiv);
   });
 };
+
+// phone details data load
+const phoneDetail = async (phoneSlug) => {
+  console.log(phoneSlug);
+  const url = `https://openapi.programming-hero.com/api/phone/${phoneSlug}`;
+  const res = await fetch(url);
+  const phoneResult = await res.json();
+  displayPhoneDetails(phoneResult.data)
+  console.log(phoneResult.data);
+};
+
